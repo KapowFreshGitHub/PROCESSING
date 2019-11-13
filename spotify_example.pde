@@ -1,7 +1,11 @@
 Table table;
 // MAXIMUM SIZE IS size(1400,800)
+int backgroundR, backgroundG, backgroundB;
 void setup() {
-
+  backgroundR=30;
+  backgroundG=34;
+  backgroundB=79;
+  background(30, 34, 79);
   size(700, 510);
   smooth();
   table = loadTable("spot.csv", "header");
@@ -13,12 +17,16 @@ void setup() {
 
 
 void draw() {
+  DisplayLineGraphEnergy();
+ // DisplayLineGraph();
+  MainGraph();
+}
 
-
+//MAIN GRAPH CODE 
+void MainGraph() {
   for (int i = 0; i < table.getRowCount()-1; i++) {
-
-    stroke(100);
-    strokeWeight(1);
+    stroke(47, 237, 98);
+    strokeWeight(2);
 
     if (table.getInt(i, 11) == 0) { //THIS IS FOR THE MODE
       fill(0);// FILL BLACK IF MINOR. 0 = MINOR
@@ -31,7 +39,7 @@ void draw() {
     // x position top left.600/total number of rows in the table(50). Next position is * 2 then *3 *4
     // y position top left. Valence percentage. Y axis. height - getfloat. because otherwise it will draw bar graph upside down.
 
-    stroke(128, 0, 128); //THIS IS LINE GRAPH FOR DANCEIBILITY. PURPLE
+    stroke(173, 76, 230); //THIS IS LINE GRAPH FOR DANCEIBILITY. PURPLE
     strokeWeight(2);
     line(600/table.getRowCount()*i, table.getFloat(i, 6)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1/*This is used to connect points between line*/, 6)*400);
 
@@ -43,52 +51,44 @@ void draw() {
     strokeWeight(2);
     line(600/table.getRowCount()*i, table.getFloat(i, 8)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 8)*400);
 
-    stroke(255, 0, 170);//THIS IS LINE GRAPH FOR ENERGY. PINK
-    strokeWeight(2);
-    line(600/table.getRowCount()*i, table.getFloat(i, 9)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 9)*400);
-  }
+    /* stroke(255, 0, 170);//THIS IS LINE GRAPH FOR ENERGY. PINK
+     strokeWeight(2);
+     line(600/table.getRowCount()*i, table.getFloat(i, 9)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 9)*400);*/
+  }//END MAIN GRAPH CODE
+}
+void displayGraphWithButtons() {
+}
 
 
-  //CLICKING ON EACH BAR
-  // if mousepressed on button switch off line graph. 
+void buttons() {
+}
 
-  // CREATE AN ARRAY FOR COLOURS
-  int[] buttoncolours = {128, 0, 128, 214, 166, 9, 0, 255, 255, 255, 0, 170};
 
-  float x = 0;
-  float y = 0;
-  float w = 100;
+
+
+void DisplayLineGraphEnergy() {
+  float w = 40;
   float h = 10;
-  // DRAWS 4 BUTTONS 
-  for (int i=0; i<5; i++) {
-    stroke(0);
-    //fill(buttoncolours[i], buttoncolours[i+1], buttoncolours[i+2]);
-    //rect(x, y, w, h);
-    x = x + w;
-    w =+ 100; 
-    if (mousePressed) {
-      if (mouseX>x && mouseX <x+w && mouseY>y && mouseY <y+h) {
-        println("The mouse is pressed and over the button");
-        fill(0);
+  float x = width - w*2;
+  float y = 10;
+  for (int i = 0; i < table.getRowCount()-1; i++) {
+    for (int j =0; j < 4; j+=h) {
+      stroke(0);
+      fill(255, 0, 170);
+      rect(x, y+j, w, h);
+      //THIS IS FOR THE PINK LINE GRAPH. THIS IS LINE GRAPH FOR ENERGY. PINK
+      if (mouseX > x && mouseX < (x + w) && mouseY > y && mouseY < (y + h)) {
+        fill(backgroundR, backgroundG, backgroundB);// FOR BUTTON
+        rect(x, y+j, w, h);
+        // if the mouse is inbetween button show the graph
+        stroke(255, 0, 170);//THIS IS LINE GRAPH FOR ENERGY. PINK
+        strokeWeight(2);
+        line(600/table.getRowCount()*i, table.getFloat(i, 9)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 9)*400);
+      }//else don't display it
+      else {
+        stroke(backgroundR, backgroundG, backgroundB);
+        line(600/table.getRowCount()*i, table.getFloat(i, 9)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 9)*400);
       }
     }
   }
-  AXIS();
 }
-
-
-
-//HERE IS THE AXIS FOR VALENCE
-void AXIS() {
-  int bigxaxis = 700;
-  int bigyaxis = 700;
-  stroke(100);
-  strokeWeight(4);
-  line(0, 0, 0, bigyaxis);
-  line(0, bigyaxis, bigxaxis, bigyaxis);
-}
-
-
-
-
-//}
