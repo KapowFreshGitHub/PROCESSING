@@ -15,12 +15,11 @@ void setup() {
   }
 }
 
-
 void draw() {
   DisplayAllLineGraphs();
-  DisplayLineGraphDanceability();
   DisplayLineGraphAcousticness();
   DisplayLineGraphLiveness();
+  DisplayLineGraphDanceability(); //if you hold the button down you can see 
   DisplayLineGraphEnergy();
   MainBarGraph();
 }
@@ -182,19 +181,19 @@ void DisplayAllLineGraphs() {
         stroke(173, 76, 230); //THIS IS LINE GRAPH FOR DANCEIBILITY. PURPLE
         strokeWeight(2);
         line(600/table.getRowCount()*i, table.getFloat(i, 6)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 6)*400);
-        
+
 
         stroke(214, 166, 9); //THIS IS LINE GRAPH FOR ACOUSTICNESS. BURNT ORANGE
-         strokeWeight(2);
-         line(600/table.getRowCount()*i, table.getFloat(i, 7)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 7)*400);
+        strokeWeight(2);
+        line(600/table.getRowCount()*i, table.getFloat(i, 7)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 7)*400);
 
         stroke(0, 255, 255);//THIS IS LINE GRAPH FOR LIVENESS. TURQUISE
-         strokeWeight(2);
-         line(600/table.getRowCount()*i, table.getFloat(i, 8)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 8)*400);
+        strokeWeight(2);
+        line(600/table.getRowCount()*i, table.getFloat(i, 8)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 8)*400);
 
         stroke(255, 0, 170);//THIS IS LINE GRAPH FOR ENERGY. PINK
-         strokeWeight(2);
-         line(600/table.getRowCount()*i, table.getFloat(i, 9)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 9)*400);
+        strokeWeight(2);
+        line(600/table.getRowCount()*i, table.getFloat(i, 9)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 9)*400);
       } else {
         stroke(backgroundR, backgroundG, backgroundB, 255);
         line(600/table.getRowCount()*i, table.getFloat(i, 6)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 6)*400);
