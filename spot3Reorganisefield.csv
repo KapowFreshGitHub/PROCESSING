@@ -1,0 +1,51 @@
+Spotify Ranking ,Artists,Name,Genre,Key,Tempo,Valence,Danceability,Acousticness,Liveness,Energy,Mode,Duration_ms,Speechiness
+1,Drake,God's Plan,Hip Hop/ R&B,G,77,0.36,0.75,0.13,0.55,0.45,1,198973,0.04
+2,XXXTENTACION,SAD!,Hip Hop/ R&B,G#,75,0.47,0.74,0.04,0.12,0.61,1,166606,0.04
+3,Post Malone,rockstar (feat. 21 Savage),Hip Hop/ R&B,F,160,0.14,0.59,0.01,0.13,0.54,0,218147,0.04
+4,Post Malone,Psycho (feat. Ty Dolla $ign),Hip Hop/ R&B,G#,140,0.44,0.74,0.1,0.11,0.56,1,221440,0.04
+5,Drake,In My Feelings,Hip Hop/ R&B,C#,91,0.35,0.84,0.17,0.4,0.63,1,217925,0.04
+6,Post Malone,Better Now,Hip Hop/ R&B,A#,145,0.37,0.68,0.37,0.14,0.56,1,231267,0.05
+7,Cardi B,I Like It,Hip Hop/ R&B,F,136,0.65,0.82,0.35,0.37,0.73,0,253390,0.05
+8,Calvin Harris,One Kiss (with Dua Lipa),Pop,A,124,0.59,0.79,0.05,0.08,0.86,0,214847,0.1
+9,Dua Lipa,IDGAF,Pop,G,97,0.51,0.84,0.02,0.08,0.54,1,217947,0.1
+10,Marshmello,FRIENDS,Pop,A,95,0.53,0.63,0.03,0.13,0.88,0,202621,0.11
+11,Camila Cabello,Havana,Pop,D,105,0.39,0.77,0.04,0.13,0.52,1,217307,0.11
+12,Juice WRLD,Lucid Dreams,Hip Hop/ R&B,F#,84,0.22,0.51,0.19,0.34,0.57,0,239836,0.05
+13,Drake,Nice For What,Hip Hop/ R&B,G#,93,0.76,0.59,0.09,0.12,0.91,1,210747,0.05
+14,Maroon 5,Girls Like You (feat. Cardi B),Pop,C,125,0.45,0.85,0.58,0.13,0.54,1,235545,0.12
+15,Zedd,The Middle,Pop,G,107,0.44,0.75,0.02,0.11,0.66,1,184732,0.12
+16,Kendrick Lamar,All The Stars (with SZA),Hip Hop/ R&B,G#,97,0.55,0.7,0.21,0.09,0.63,1,232187,0.05
+17,Ariana Grande,no tears left to cry,Pop,A,122,0.35,0.7,0.06,0.29,0.71,0,205920,0.13
+18,Nicky Jam,X,Latin,A,180,0.71,0.6,0.58,0.33,0.77,0,173628,0.08
+19,XXXTENTACION,Moonlight,Hip Hop/ R&B,A,128,0.71,0.92,0.57,0.1,0.54,0,135090,0.05
+20,BlocBoy JB,Look Alive (feat. Drake),Hip Hop/ R&B,A#,140,0.6,0.92,0.18,0.11,0.58,1,181263,0.05
+21,Rudimental,"These Days (feat. Jess Glynne, Macklemore & Dan Caplen)",Pop,C,92,0.55,0.65,0.1,0.17,0.81,1,210773,0.13
+22,Nio Garcia,Te Bote - Remix,Latin,B,97,0.44,0.9,0.56,0.06,0.68,0,417920,0.08
+23,Bazzi,Mine,Pop,E,143,0.72,0.71,0.26,0.45,0.79,1,131064,0.15
+24,5 Seconds of Summer,Youngblood,Pop,G,120,0.15,0.6,0.18,0.12,0.85,0,203418,0.15
+25,Dua Lipa,New Rules,Pop,A,116,0.61,0.76,0.16,0.15,0.7,0,209320,0.2
+26,Ed Sheeran,Shape of You,Pop,C#,96,0.93,0.83,0.35,0.09,0.65,0,233713,0.2
+27,Khalid,Love Lies (with Normani),Hip Hop/ R&B,F#,144,0.34,0.71,0.04,0.13,0.65,1,201707,0.05
+28,Bebe Rexha,Meant to Be (feat. Florida Georgia Line),Pop,A#,154,0.59,0.64,0.54,0.06,0.77,1,164205,0.21
+29,XXXTENTACION,Jocelyn Flores,Hip Hop/ R&B,C,134,0.44,0.87,0.04,0.3,0.39,0,119133,0.06
+30,Ed Sheeran,Perfect,Pop,G#,95,0.17,0.6,0.01,0.11,0.45,1,263400,0.22
+31,Tyga,Taste (feat. Offset),Hip Hop/ R&B,C,98,0.34,0.88,0.06,0.1,0.56,1,232959,0.06
+32,Clean Bandit,Solo (feat. Demi Lovato),Dance/Electronic,B,105,0.57,0.74,0.88,0.35,0.64,0,222653,0.03
+33,Post Malone,I Fall Apart,Hip Hop/ R&B,G#,144,0.29,0.56,0,0.2,0.54,0,223347,0.07
+34,Dennis Lloyd,Nevermind,Dance/Electronic,D,100,0.08,0.59,0.18,0.42,0.69,1,156600,0.03
+35,Luis Fonsi,Echame La Culpa,Latin,C,96,0.65,0.73,0.05,0.09,0.89,1,173720,0.08
+36,benny blanco,Eastside (with Halsey & Khalid),Pop,F#,89,0.32,0.56,0.47,0.12,0.68,0,173800,0.24
+37,Camila Cabello,Never Be the Same,Pop,C,130,0.24,0.64,0,0.14,0.71,1,226973,0.27
+38,Selena Gomez,Wolves,Pop,B,125,0.31,0.72,0.56,0.18,0.81,0,197993,0.32
+39,XXXTENTACION,Changes,Hip Hop/ R&B,B,65,0.52,0.67,0.09,0.1,0.31,1,121887,0.07
+40,Dynoro,In My Mind,Dance/Electronic,F#,126,0.16,0.69,0.07,0.12,0.77,1,184560,0.04
+41,Eminem,River (feat. Ed Sheeran),Pop,G#,90,0.66,0.75,0.02,0.07,0.75,0,221013,0.46
+42,Daddy Yankee,Dura,Latin,C#,95,0.83,0.79,0.12,0.41,0.85,1,200480,0.09
+43,Travis Scott,SICKO MODE,Hip Hop/ R&B,G#,155,0.45,0.83,0.02,0.12,0.73,1,312820,0.07
+44,Imagine Dragons,Thunder,Alternative,C,168,0.29,0.61,0.16,0.15,0.82,1,187147,0.02
+45,Reik,Me Niego,Latin,C,94,0.77,0.78,0.04,0.64,0.78,0,221653,0.09
+46,Tiesto,Jackie Chan,Dance/Electronic,D,128,0.69,0.75,0.03,0.06,0.83,0,215760,0.04
+47,Bruno Mars,Finesse (Remix) [feat. Cardi B],Hip Hop/ R&B,F,105,0.93,0.7,0.18,0.02,0.86,0,217289,0.07
+48,Selena Gomez,Back To You - From 13 Reasons Why ? Season 2 Soundtrack,Pop,F#,102,0.51,0.6,0.14,0.12,0.72,1,207905,0.52
+49,NF,Let You Down,Hip Hop/ R&B,F,148,0.468,0.656,0.298,0.173,0.72,0,212120,0.12
+50,The Weeknd,Call Out My Name,Hip Hop/ R&B,C#,134,0.172,0.489,0.218,0.35,0.6,1,228373,0.04
