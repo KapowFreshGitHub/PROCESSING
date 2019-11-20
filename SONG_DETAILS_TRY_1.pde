@@ -14,10 +14,6 @@ void setup() {
   backgroundB=79;
   size(1300, 700);
   table = loadTable("spot2.csv", "header");
-  //println(table.getRowCount());
-  for (int i = 0; i < table.getRowCount(); i++) { 
-    //println(table.getString(i, 6));
-  }
   //Array of object Songdetails(No length as yet) used in songattributesdisplay() procedure
   songfeatures = new Songdetails[table.getRowCount()];//Make array set length of array from the amount of rows from table
 }
@@ -39,9 +35,6 @@ void draw() {
 }
 
 void DisplayTitle() {
-  //600 is middle
-  // PFont mono = createFont("Gotham-Book.otf", 14);
-  // textFont(mono);
   fill(47, 237, 98);
   text("<-Spotify's Top 50 (from left to right) Tracks of 2018 and song attributes in relation to valence", 610, 14);
 }
@@ -66,7 +59,7 @@ void DisplayKeys() {
 void mouseMoved() {// HELP!! 
   //ON CLICK FOR EACH BAR I WANT TO BE ABLE TO SHOW THE DETAILS OF EACH SONG HOW DO I DO THIS?
   //I KNOW THIS ISNT CORRECT 
-  
+
   float[] BarposX = new float [table.getRowCount()];
   float[] BarposY = new float [table.getRowCount()];
   float[] Barwidth = new float [table.getRowCount()];
@@ -78,7 +71,7 @@ void mouseMoved() {// HELP!!
     Barheight[i] = table.getFloat(i, 5)*500;
 
     rect(10+(600/table.getRowCount())*i, height-table.getFloat(i, 5)*500, 600/table.getRowCount(), table.getFloat(i, 5)*500);
-    if (mouseX > BarposX[i] && /*mouseX < (BarposX[i] + Barwidth[i]) &&*/ mouseY > BarposY[i] /*&& mouseY < (BarposY[i] + Barheight[i])*/) {
+    if (mouseX > BarposX[i] &&  mouseY > BarposY[i] ) {
       songindex = i;
       println(songindex);
       println(BarposX[i]);
@@ -87,7 +80,6 @@ void mouseMoved() {// HELP!!
 }
 
 void songattributesdisplay(int songindex) {
-
   for (int i=0; i< table.getRowCount(); i++) {
     songfeatures[i] = new Songdetails(table.getInt(i, 0), table.getString(i, 1), table.getString(i, 4), table.getString(i, 3), table.getString(i, 10), table.getInt(i, 2), table.getInt(i, 11), table.getFloat(i, 5), table.getFloat(i, 6), table.getFloat(i, 7), table.getFloat(i, 8), table.getFloat(i, 9), table.getInt(i, 12), table.getFloat(i, 13));//Add data (Objects) to array
     //println(songfeatures[i].spotifyranking + ",", songfeatures[i].artists + ",", songfeatures[i].name + ",", songfeatures[i].genre + ",", songfeatures[i].keysignature + ",", songfeatures[i].tempo + ",", songfeatures[i].mode + ",");//Print variable name and age for each object
@@ -106,7 +98,32 @@ void songattributesdisplay(int songindex) {
     text("  Acousticness:" + " " + songfeatures[songindex].acousticness, 620, 500);
     text("  Liveness:" + " " + songfeatures[songindex].liveness, 620, 520);
     text("  Energy:" + " " + songfeatures[songindex].energy, 620, 540);
+    bubblevisualisation();
+    titleforbubblevisualisation();
   }
+}
+void titleforbubblevisualisation() {
+  fill(47, 237, 98);
+  text("Bubble Visual: Showing the effect of each attribute on valence", 800, 590);
+}
+
+void bubblevisualisation() {
+
+  fill(47, 237, 98); //CIRCLE FOR VALENCE
+  ellipse(1110, (400+520)/2, songfeatures[songindex].valence * 100, songfeatures[songindex].valence * 100);
+  noFill();
+  stroke(47, 237, 98);
+  strokeWeight(2);
+  ellipse(1110, (400+520)/2, songfeatures[songindex].valence * 200, songfeatures[songindex].valence * 200);
+  noStroke();
+  fill(173, 76, 230); //CIRCLE FOR DANCEABILITY
+  ellipse(1000, 520, songfeatures[songindex].danceability * 100, songfeatures[songindex].danceability * 100);
+  fill(214, 166, 9); //CIRCLE FOR ACOUSTICNESS
+  ellipse(1000, 400, songfeatures[songindex].acousticness * 100, songfeatures[songindex].acousticness * 100);
+  fill(0, 255, 255); //CIRCLE FOR LIVENESS
+  ellipse(1200, 400, songfeatures[songindex].liveness * 100, songfeatures[songindex].liveness * 100);
+  fill(255, 0, 170); //CIRCLE FOR ENERGY
+  ellipse(1200, 520, songfeatures[songindex].energy * 100, songfeatures[songindex].energy * 100);
 }
 
 //MAIN GRAPH CODE 
@@ -116,7 +133,7 @@ void MainBarGraph() {
     strokeWeight(2);
 
     if (table.getInt(i, 11) == 0) { //THIS IS FOR THE MODE
-      fill(0);// FILL BLACK IF MINOR. 0 = MINOR
+      fill(50);// FILL BLACK IF MINOR. 0 = MINOR
     } else {
       fill(255);//FILL WHITE IF MAJOR. 1 = MAJOR
     }
@@ -249,7 +266,7 @@ void DisplayAllLineGraphs() {
   for (int i = 0; i < table.getRowCount()-1; i++) {
     stroke(0);
     strokeWeight(2);
-    fill(120);
+    fill(255,0,0);
     rect(x, y, w, h);
     text(" - Click on button for a broad view of all the stats of the attributes of each song", x + w, y + h/2);
     //THIS IS LINE GRAPH FOR ACOUSTICNESS. BURNT ORANGE
@@ -286,15 +303,18 @@ void DisplayAllLineGraphs() {
 }
 
 void  DisplayMinorandMajorkeyinkeybox() {
+  float y = 60 + h*5;
   // BAR KEYS
   stroke(47, 237, 98);
   strokeWeight(2);
   fill(255);//MAJOR KEY BAR GRAPH KEY
   rect(x, 60+h*5+(2), 20, 20);
-  //text(" - Click on button for a broad view of all the stats of the attributes of each song", x + w, y + h/2);
-
-  fill(0);//MINOR KEY BAR GRAPH KEY
+  text("--- MAJOR MODE ", x + w, y + h/2);
+  
+  y = 60 + h*6;
+  fill(50);//MINOR KEY BAR GRAPH KEY
   rect(x, 60+h*6, 20, 20);
+  text("--- MINOR MODE ", x + w, y + h/2);
 }
 
 void songboxdisplay() {
