@@ -14,7 +14,7 @@ class Songdetails {
   int duration_ms  ;
   float speechiness;
 
-  Songdetails(int sr, String a, String n, String g, String ks, int t, int m, float v, float d, float ac, float l, float e, int dms, float sp  ) {
+  Songdetails(int sr, String a, String n, String g, String ks, int t, int m, float v, float d, float ac, float l, float e, int dms, float sp) {
     spotifyranking = sr;  
     artists = a;
     name =n ;
