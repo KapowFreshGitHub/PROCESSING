@@ -10,11 +10,10 @@ class Songdetails {
   float danceability  ;
   float acousticness ; 
   float liveness  ;
-  float energy  ;
-  int duration_ms  ;
-  float speechiness;
+  float energy;
 
-  Songdetails(int sr, String a, String n, String g, String ks, int t, int m, float v, float d, float ac, float l, float e, int dms, float sp) {
+
+  Songdetails(int sr, String a, String n, String g, String ks, int t, int m, float v, float d, float ac, float l, float e ) {
     spotifyranking = sr;  
     artists = a;
     name =n ;
@@ -27,7 +26,5 @@ class Songdetails {
     acousticness = ac ; 
     liveness = l  ;
     energy = e  ;
-    duration_ms = dms  ;
-    speechiness = sp;
   }
 }

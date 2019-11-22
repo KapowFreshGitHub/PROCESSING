@@ -1,11 +1,10 @@
-Songdetails[] songfeatures; // OBJECTS FOR SONG FEATURES (SHOWN AS TEXT ON SKETCH
+Songdetails[] songfeatures; // OBJECTS FOR SONG FEATURES
 
 Table table;
 float w = 80;
 float h = 30;
 float x = 625;
 int songindex;
-// MAXIMUM SIZE IS size(1400,800)
 int backgroundR, backgroundG, backgroundB;
 
 void setup() {
@@ -25,7 +24,7 @@ void draw() {
   DisplayAllLineGraphs();
   DisplayLineGraphAcousticness();
   DisplayLineGraphLiveness();
-  DisplayLineGraphDanceability(); //if you hold the button down you can see 
+  DisplayLineGraphDanceability(); //if you hold the button down you can see the line graph
   DisplayLineGraphEnergy();
   MainBarGraph();
   DrawYaxis();
@@ -36,7 +35,7 @@ void draw() {
 
 void DisplayTitle() {
   fill(47, 237, 98);
-  text("<-Spotify's Top 50 (from left to right) Tracks of 2018 and song attributes in relation to valence", 610, 14);
+  text("<-Spotify's Top 50 (from left to right) Tracks of 2018 and the valence percentage (Y-Axis)", 610, 14);
 }
 
 void DrawYaxis() {
@@ -56,32 +55,32 @@ void DisplayKeys() {
   text("KEYS", 625+ (CENTER/4), 55);
 }
 
-void mouseMoved() {// HELP!! 
-  //ON CLICK FOR EACH BAR I WANT TO BE ABLE TO SHOW THE DETAILS OF EACH SONG HOW DO I DO THIS?
-  //I KNOW THIS ISNT CORRECT 
-
-  float[] BarposX = new float [table.getRowCount()];
-  float[] BarposY = new float [table.getRowCount()];
-  float[] Barwidth = new float [table.getRowCount()];
-  float[] Barheight = new float [table.getRowCount()];
-  for (int i = 0; i< table.getRowCount(); i++) {
-    BarposX[i] = 10+(600/table.getRowCount())*i;
-    BarposY[i] = table.getFloat(i, 5);
-    Barwidth[i] =600/table.getRowCount();
-    Barheight[i] = table.getFloat(i, 5)*500;
-
-    rect(10+(600/table.getRowCount())*i, height-table.getFloat(i, 5)*500, 600/table.getRowCount(), table.getFloat(i, 5)*500);
-    if (mouseX > BarposX[i] &&  mouseY > BarposY[i] ) {
-      songindex = i;
-      println(songindex);
-      println(BarposX[i]);
+void mouseMoved() { 
+  //WHEN USER HOVERS ON BAR GRAPH IT DSPLAYS THE SONG DETAILS FOR EACH BAR GRAPH
+    float[] BarposX = new float [table.getRowCount()];
+    float[] BarposY = new float [table.getRowCount()];
+    float[] Barwidth = new float [table.getRowCount()];
+    float[] Barheight = new float [table.getRowCount()];
+    for (int i = 0; i< table.getRowCount(); i++) {
+      BarposX[i] = 10+(600/table.getRowCount())*i;
+      BarposY[i] = table.getFloat(i, 5);
+      Barwidth[i] =600/table.getRowCount();
+      Barheight[i] = table.getFloat(i, 5)*500;
+      noFill();
+      rect(10+(600/table.getRowCount())*i, height-table.getFloat(i, 5)*500, 600/table.getRowCount(), table.getFloat(i, 5)*500);
+      if (mouseX > BarposX[i] &&  mouseY > BarposY[i] ) {
+        songindex = i;
+        println(songindex);
+        println(BarposX[i]);
+      }
     }
   }
-}
-
 
 //MAIN GRAPH CODE 
 void MainBarGraph() {
+  //DRAWING BAR GRAPHS FOR VALENCE
+  // x position top left.600/total number of rows in the table(50). Next position is * 2 then *3 *4
+  // y position top left. Valence percentage. Y axis. height - getfloat. because otherwise it will draw bar graph upside down.
   for (int i = 0; i < table.getRowCount()-1; i++) {
     stroke(47, 237, 98);
     strokeWeight(2);
@@ -91,28 +90,8 @@ void MainBarGraph() {
     } else {
       fill(255);//FILL WHITE IF MAJOR. 1 = MAJOR
     }
-
     rect(10+(600/table.getRowCount())*i, height-table.getFloat(i, 5)*500, 600/table.getRowCount(), table.getFloat(i, 5)*500);
-    //DRAWING BAR GRAPHS FOR VALENCE
-    // x position top left.600/total number of rows in the table(50). Next position is * 2 then *3 *4
-    // y position top left. Valence percentage. Y axis. height - getfloat. because otherwise it will draw bar graph upside down.
-
-    /*stroke(173, 76, 230); //THIS IS LINE GRAPH FOR ANCEIBILITY. PURPLE
-     strokeWeight(2);
-     line(600/table.getRowCount()*i, table.getFloat(i, 6)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1/*This is used to connect points between line*/    /*, 6)*400);*/
-
-    /*stroke(214, 166, 9); //THIS IS LINE GRAPH FOR ACOUSTICNESS. BURNT ORANGE
-     strokeWeight(2);
-     line(600/table.getRowCount()*i, table.getFloat(i, 7)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 7)*400);*/
-
-    /*stroke(0, 255, 255);//THIS IS LINE GRAPH FOR LIVENESS. TURQUISE
-     strokeWeight(2);
-     line(600/table.getRowCount()*i, table.getFloat(i, 8)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 8)*400);*/
-
-    /* stroke(255, 0, 170);//THIS IS LINE GRAPH FOR ENERGY. PINK
-     strokeWeight(2);
-     line(600/table.getRowCount()*i, table.getFloat(i, 9)*400, 600/table.getRowCount()*(i+1), table.getFloat(i+1, 9)*400);*/
-  }//END MAIN GRAPH CODE
+  }
 }
 
 void DisplayLineGraphEnergy() {
@@ -122,7 +101,7 @@ void DisplayLineGraphEnergy() {
     //strokeWeight(2);
     fill(255, 0, 170);
     rect(x, y, w, h);
-    text(" - Click on button for the stats on energy", x + w, y + h/2);
+    text(" - Hold on button for the stats on energy", x + w, y + h/2);
     //THIS IS FOR THE PINK LINE GRAPH. THIS IS LINE GRAPH FOR ENERGY. PINK
     if (mousePressed) {
       if (mouseX > x && mouseX < (x + w) && mouseY > y && mouseY < (y + h)) {
@@ -149,7 +128,7 @@ void DisplayLineGraphDanceability() {
     strokeWeight(2);
     fill(173, 76, 230);
     rect(x, y, w, h);
-    text(" - Click on button for the stats on danceability", x + w, y + h/2);
+    text(" - Hold on button for the stats on danceability", x + w, y + h/2);
     //THIS IS LINE GRAPH FOR DANCEIBILITY. PURPLE
     if (mousePressed) {
       if (mouseX > x && mouseX < (x + w) && mouseY > y && mouseY < (y + h)) {
@@ -172,7 +151,7 @@ void DisplayLineGraphAcousticness() {
     stroke(0);
     strokeWeight(2);
     fill(214, 166, 9);
-    text(" - Click on button for the stats on acousticness", x + w, y + h/2);
+    text(" - Hold on button for the stats on acousticness", x + w, y + h/2);
     rect(x, y, w, h);
     //THIS IS LINE GRAPH FOR ACOUSTICNESS. BURNT ORANGE
     if (mousePressed) {
@@ -196,7 +175,7 @@ void DisplayLineGraphLiveness() {
     stroke(0);
     strokeWeight(2);
     fill(0, 255, 255);
-    text(" - Click on button for the stats on liveness ", x + w, y + h/2);
+    text(" - Hold on button for the stats on liveness ", x + w, y + h/2);
     rect(x, y, w, h);
     if (mousePressed) {
       if (mouseX > x && mouseX < (x + w) && mouseY > y && mouseY < (y + h)) {
@@ -222,7 +201,7 @@ void DisplayAllLineGraphs() {
     strokeWeight(2);
     fill(255, 0, 0);
     rect(x, y, w, h);
-    text(" - Click on button for a broad view of all the stats of the attributes of each song", x + w, y + h/2);
+    text(" - Hold on button for a broad view of all the stats of the attributes of each song", x + w, y + h/2);
 
     if (mousePressed) {
       if (mouseX > x && mouseX < (x + w) && mouseY > y && mouseY < (y + h)) {
@@ -280,7 +259,7 @@ void songboxdisplay() {
 
 void songattributesdisplay(int songindex) {
   for (int i=0; i< table.getRowCount(); i++) {
-    songfeatures[i] = new Songdetails(table.getInt(i, 0), table.getString(i, 1), table.getString(i, 4), table.getString(i, 3), table.getString(i, 10), table.getInt(i, 2), table.getInt(i, 11), table.getFloat(i, 5), table.getFloat(i, 6), table.getFloat(i, 7), table.getFloat(i, 8), table.getFloat(i, 9), table.getInt(i, 12), table.getFloat(i, 13));//Add data (Objects) to array
+    songfeatures[i] = new Songdetails(table.getInt(i, 0), table.getString(i, 1), table.getString(i, 4), table.getString(i, 3), table.getString(i, 10), table.getInt(i, 2), table.getInt(i, 11), table.getFloat(i, 5), table.getFloat(i, 6), table.getFloat(i, 7), table.getFloat(i, 8), table.getFloat(i, 9));//Add data (Objects) to array
     //println(songfeatures[i].spotifyranking + ",", songfeatures[i].artists + ",", songfeatures[i].name + ",", songfeatures[i].genre + ",", songfeatures[i].keysignature + ",", songfeatures[i].tempo + ",", songfeatures[i].mode + ",");//Print variable name and age for each object
     int Textxpos = 620;
     fill(150);
@@ -305,22 +284,25 @@ void songattributesdisplay(int songindex) {
     fill(255, 0, 170); 
     text("  Energy:" + " " + songfeatures[songindex].energy *100 + "%", Textxpos, 540);
     bubblevisualisation();
-    titleforbubblevisualisation();
+    Questionsforusers();
   }
 }
-void titleforbubblevisualisation() {
+void Questionsforusers() {
   fill(47, 237, 98);
-  text("Bubble Visual: Showing the effect of each attribute on valence", 800, 590);
+  //text("Bubble Visual: Showing the effect of each attribute to valence", 800, 590);
+  text("Why is the valence of the song not in accordance to the ranking?", x, 610);
+  fill(255);
+  text("  The more optimistic the song doesn't equal to more listens... ", x, 630);
+  fill(47, 237, 98);
+  text("    Slide the mouse over the bar graph to show the proportion of different attributes", x, 650);
 }
 
-void bubblevisualisation() {
-
+void bubblevisualisation() { 
   fill(47, 237, 98); //CIRCLE FOR VALENCE
   ellipse(1110, (400+520)/2, songfeatures[songindex].valence * 100, songfeatures[songindex].valence * 100);
   noFill();
   stroke(47, 237, 98);
   strokeWeight(2); // CIRCLE OUTLINE FOR VALENCE
-  
   ellipse(1110, (400+520)/2, songfeatures[songindex].valence * 200, songfeatures[songindex].valence * 200);
   noStroke();
   fill(173, 76, 230); //CIRCLE FOR DANCEABILITY
