@@ -12,9 +12,9 @@ void setup() {
   backgroundG=34;
   backgroundB=79;
   size(1300, 700);
-  table = loadTable("spot2.csv", "header");
-  //Array of object Songdetails(No length as yet) used in songattributesdisplay() procedure
-  songfeatures = new Songdetails[table.getRowCount()];//Make array set length of array from the amount of rows from table
+  table = loadTable("Top Spotify Tracks of 2018.csv", "header");
+  //Array of object Songdetails used in songattributesdisplay() procedure
+  songfeatures = new Songdetails[table.getRowCount()];//Make array and then set length of array from the amount of rows from table
 }
 
 void draw() {
@@ -24,7 +24,7 @@ void draw() {
   DisplayAllLineGraphs();
   DisplayLineGraphAcousticness();
   DisplayLineGraphLiveness();
-  DisplayLineGraphDanceability(); //if you hold the button down you can see the line graph
+  DisplayLineGraphDanceability(); 
   DisplayLineGraphEnergy();
   MainBarGraph();
   DrawYaxis();
@@ -234,6 +234,7 @@ void DisplayAllLineGraphs() {
   }
 }
 
+// DISPLAY MAJOR AND MINOR MODE KEYS IN BOX 
 void  DisplayMinorandMajorkeyinkeybox() {
   float y = 60 + h*5;
   // BAR KEYS
@@ -250,6 +251,7 @@ void  DisplayMinorandMajorkeyinkeybox() {
   text("--- MINOR MODE ", x + w, y + h/2);
 }
 
+//SONG DETAILS BOX
 void songboxdisplay() {
   noFill();
   strokeWeight(5);
@@ -260,8 +262,7 @@ void songboxdisplay() {
 void songattributesdisplay(int songindex) {
   for (int i=0; i< table.getRowCount(); i++) {
     songfeatures[i] = new Songdetails(table.getInt(i, 0), table.getString(i, 1), table.getString(i, 4), table.getString(i, 3), table.getString(i, 10), table.getInt(i, 2), table.getInt(i, 11), table.getFloat(i, 5), table.getFloat(i, 6), table.getFloat(i, 7), table.getFloat(i, 8), table.getFloat(i, 9));//Add data (Objects) to array
-    //println(songfeatures[i].spotifyranking + ",", songfeatures[i].artists + ",", songfeatures[i].name + ",", songfeatures[i].genre + ",", songfeatures[i].keysignature + ",", songfeatures[i].tempo + ",", songfeatures[i].mode + ",");//Print variable name and age for each object
-    int Textxpos = 620;
+    int Textxpos = 620; // ALIGNS X POSTION OF TEXT WITHIN THE BOX
     fill(150);
     textSize(18);
     text("  Spotify Ranking:" + " " + songfeatures[songindex].spotifyranking, Textxpos, 320);
@@ -287,16 +288,18 @@ void songattributesdisplay(int songindex) {
     Questionsforusers();
   }
 }
+
+//QUESTIONS FOR USERS TO THINK ABOUT WHEN LOOKING AT THE DATA
 void Questionsforusers() {
   fill(47, 237, 98);
-  //text("Bubble Visual: Showing the effect of each attribute to valence", 800, 590);
   text("Why is the valence of the song not in accordance to the ranking?", x, 610);
   fill(255);
   text("  The more optimistic the song doesn't equal to more listens... ", x, 630);
   fill(47, 237, 98);
-  text("    Slide the mouse over the bar graph to show the proportion of different attributes", x, 650);
+  text("    Slide mouse over the bar graph to show the proportion of different attributes", x, 650);
 }
 
+// DISPLAYS BUBBLE VISUALISATUON FOR EACH SONG
 void bubblevisualisation() { 
   fill(47, 237, 98); //CIRCLE FOR VALENCE
   ellipse(1110, (400+520)/2, songfeatures[songindex].valence * 100, songfeatures[songindex].valence * 100);
