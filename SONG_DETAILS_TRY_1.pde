@@ -286,7 +286,7 @@ void Questionsforusers() {
   fill(47, 237, 98);
   text("Why is the valence of the song not in accordance to the ranking?", x, 610);
   fill(255);
-  text("  Wouldn't you think... the more optimistic the song more listens??? ", x, 630);
+  text("  Wouldn't you think... the more optimistic the song... the more listens? ", x, 630);
   text("    What other attributes of a song make it popular...", x, 650);
   fill(47, 237, 98);
   text("    Slide the mouse over each bar on bar graph to show the bubble visualisation for each song", x, 670);
